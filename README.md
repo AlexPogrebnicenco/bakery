@@ -12,10 +12,17 @@
 
 This is a closed website accessible only to users who have been provided with a login and password. Once logged in, users can place orders, which are then sent to the server and processed into 1C tables. The project only includes the client-side functionality. Product cards are dynamically generated using a JavaScript function.
 
+## How to Get Started:
+
+1. Open the `/login/index.html` file using VS Code.
+2. Launch the file with the Live Server extension to view it in your browser.
+3. To access the main page, click the **LOGIN** button on the login page.
+
+
 ## Developers
 
 - [Alex Pogrebnicenco](https://github.com/AlexPogrebnicenco)
 
 ## License
 
-Project bakery is distributed under the MIT license.
+  Project bakery is distributed under the MIT license.
