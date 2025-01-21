@@ -1,0 +1,195 @@
+@font-face {
+    font-family: 'Cera Pro Regular';
+    src: url('../assets/style/fonts/CeraPro-Regular.eot');
+    src: url('../assets/style/fonts/CeraPro-Regular.eot?#iefix') format('embedded-opentype'), 
+         url('../assets/style/fonts/CeraPro-Regular.woff') format('woff'), 
+         url('../assets/style/fonts/CeraPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --dustyRose: #D68B8D; /*Hover*/
+    --basicRose: #F8C7C7; /*Button*/
+    --peachCream: #F7E7D8;  /*Background color*/
+    --lavender: #CCC2DC; /*Hover FIGMA type*/
+    --lightGray: #F3F0F0; /*Background color for product card */
+    --darkGray: #686868; /* Table thread */
+    --lineGray: #D9D9D9; /*Table line*/
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cera Pro Regular', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #F7E7D8;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    color: #000000;
+    position: relative;
+}
+
+.top-image {
+    position: absolute;
+    top: 25vh; 
+    left: 50%;
+    transform: translateX(-53%);
+    width: 80%; 
+    max-width: 511px;
+    height: auto; 
+}
+
+form {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.bottom-image {
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-47%);
+    width: 80%; 
+    max-width: 564px;
+    height: auto; 
+}
+
+.wrapper h1 {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20.11px;
+}
+
+.wrapper .input-box {
+    width: 100%;
+    height: 46px;
+    border-radius: 30px;
+    margin: 5px 0 5px;
+    background-color: var(--basicRose);
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #000000;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.input-box input::placeholder {
+    color: var(--darkGray);
+}
+
+.wrapper .btn {
+    display: inline-block;
+    width: 75%;
+    height: 45px;
+    background-color: var(--basicRose);
+    color: var(--darkGray);
+    line-height: 45px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+    cursor: pointer;
+    margin-top: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    
+}
+
+.wrapper .btn:hover {
+   background-color: var(--lavender);
+   color:#000000;
+   transform: scale(1.05);
+   box-shadow: 0 0 20px rgb(0, 0, 0, 0.7);
+}
+
+
+
+
+/* Медиазапросы для адаптивности */
+
+@media(max-width: 1440px) {
+    .top-image {
+        top: 3vh;
+        width: 90%;
+    }
+    .bottom-image {
+        bottom: -20vh;
+        width: 90%;
+    }
+} 
+
+
+@media (max-width: 768px) {
+    .top-image {
+        top: 3vh;
+        width: 90%;
+    }
+    .bottom-image {
+        bottom: -10vh;
+        width: 90%;
+    }
+
+    .wrapper {
+        padding: 10px; /* Уменьшение отступов */
+    }
+
+    .wrapper h1 {
+        font-size: 14px; /* Уменьшение размера текста */
+    }
+
+    .input-box {
+        height: 40px; /* Уменьшение высоты полей */
+    }
+
+    .wrapper .btn {
+        height: 40px; /* Уменьшение высоты кнопки */
+    }
+}
+
+@media (max-width: 321px) {
+    .top-image {
+        top: 0vh;
+        width: 90%;
+    }
+    .bottom-image {
+        bottom: -30vh;
+        width: 90%;
+    }
+
+    .wrapper {
+        top: 5vh;
+    }
+
+    .wrapper h1 {
+        font-size: 14px; 
+    }
+
+    .input-box {
+        height: 35px;
+    }
+
+    .wrapper .btn {
+        height: 35px;
+    }
+}

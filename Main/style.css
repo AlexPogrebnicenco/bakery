@@ -1,0 +1,1480 @@
+@font-face {
+    font-family: 'Cera Pro Bold';
+    src: url('../assets/style/fonts/CeraPro-Bold.eot');
+    src: url('../assets/style/fonts/CeraPro-Bold.eot?#iefix') format('embedded-opentype'), 
+         url('../assets/style/fonts/CeraPro-Bold.woff') format('woff'), 
+         url('../assets/style/fonts/CeraPro-Bold.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cera Pro Regular';
+    src: url('../assets/style/fonts/CeraPro-Regular.eot');
+    src: url('../assets/style/fonts/CeraPro-Regular.eot?#iefix') format('embedded-opentype'), 
+         url('../assets/style/fonts/CeraPro-Regular.woff') format('woff'), 
+         url('../assets/style/fonts/CeraPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --dustyRose: #D68B8D; /*Hover*/
+    --basicRose: #F8C7C7; /*Button*/
+    --peachCream: #F7E7D8;  /*Background color*/
+    --lavender: #CCC2DC; /*Hover FIGMA type*/
+    --lightGray: #F3F0F0; /*Background color for product card */
+    --darkGray: #686868; /* Table thread */
+    --lineGray: #D9D9D9; /*Table line*/
+
+}
+
+body, html {
+    font-family: 'Cera Pro Regular', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: var(--peachCream);
+    width: 100%;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 66.72vw;
+    margin: 0px auto;
+}
+
+/* HEADER */
+header {
+    margin-top: 3.13vw;
+}
+
+
+.header-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.header-content__logo-container {
+    flex: 1; /* Занимает все доступное пространство для центрирования */
+    display: flex;
+    justify-content: center; /* Центрируем логотип внутри контейнера */
+}
+
+.header-content__logo-container img {
+    margin-left: 1.93vw;
+}
+
+.header-content__last {
+    position: relative; /* Абсолютное позиционирование для иконки выхода */
+    margin: 2.45vw 1.56vw 0 0;
+    transition: all 0.3s ease;
+}
+
+.header-content__last:hover {
+    transform: scale(1.05);
+}
+
+
+
+
+/* MAIN */
+
+  /*MAIN - Menu*/
+.main-content_about p {
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-size: 2.625rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin: 1.98vw 0px 1.98vw 0px;
+}
+
+.category {
+    margin-bottom: 4.69vw;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    color: #000000;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.js-products-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.04vw;
+    justify-content: center;
+}
+
+.js-products-list .category-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 1.56vw;
+    flex: 1 1 100%;
+}
+/* Блок карточки */
+
+.product-card {
+    width: 15.89vw;
+    height: auto;
+    padding: 1.41vw 0 0.83vw 0 ;
+    background-color: var(--lightGray);
+    border-radius: 0.52vw;
+    box-shadow: 0 0.21vw 0.42vw rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Cera Pro Regular', sans-serif;
+    color: black;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+/* Увеличение карточки при наведении */
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.21vw 0.82vw rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+
+
+/*///////////// Стили для модального окна описания //////// */
+/* Основные стили для модального окна */
+.product-description-modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    opacity: 0; /* Для анимации плавного появления */
+    transition: opacity 0.3s ease; /*Переход для плавности */
+}
+
+
+/* Активное состояние модального окна */
+
+.product-description-modal.active{
+    display: flex; /* Центрирование содержимого */
+    opacity: 1; /* Плавное появление */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Затемняющий фон */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Основной контейнер модального окна */
+.modal-content {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    max-height: 600px;
+    height: 100%;
+    background-color: var(--peachCream);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    font-family: 'Cera Pro Regular', sans-serif;
+    color: #000000;
+    position: relative;
+    z-index: 1000;
+    gap: 20px;
+}
+
+/* Контейнер для изображения */ 
+ .modal-content > div:first-child {
+    flex-shrink: 0;
+}
+
+.image-wrapper {
+    max-height: 410px;
+    max-width: 320px;
+    height: 100%;
+    background-color: var(--lightGray); /* Цвет заднего блока */
+    padding: 30px; /* Отступы вокруг изображения */
+    border-radius: 10px; /* Скругленные углы для заднего блока */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили для изображения продукта */
+.modal-content .product-image {
+    max-width: 265px;
+    max-height: 350px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для текстового содержания */
+.modal-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    max-width: 400px;
+    max-height: 410px;
+    height: 100%;
+}
+
+/* Логотип */
+
+.modal-logo img{
+    width: 317px;
+    max-height: 83px;
+    margin-bottom: 10px;
+    margin-left: 49px;
+}
+
+/* Заголовок */
+.modal-title {
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    padding-right: 32px;
+    padding-left: 60px;
+}
+
+/* Описание продукта */
+.product-description-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #000000;
+    margin: 0;
+    padding-right: 32px;
+    padding-left: 60px;
+}
+
+/* Кнопка закрытия с текстом и иконками ("Inchide") */
+.modal-close-btn {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000000;
+    font-family: 'Cera Pro Regular', sans-serif;
+    gap: 8px;
+    position: absolute;
+    bottom: 30px; /* Отступ от нижнего края */
+    right: 60px; /* Отступ от правого края */
+    background-color: transparent;
+    padding: 10px 15px;
+}
+
+/* Стили для стрелки */
+.close-arrow {
+    width: 40px;
+    height: auto;
+}
+
+/* Основные стили для иконки крестика */
+.close-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../assets/images/modal-close-btn.png'); /* Исходное изображение */
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Эффекты при наведении */
+.close-icon:hover {
+    background-image: url('../assets/images/modal-close-btn-active.png'); /* Новое изображение при наведении */
+    transform: scale(1.05); /* Увеличение при наведении */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Увеличение тени */
+}
+
+
+
+
+/*////////////////////////////// Стили для модального окна описания конец */
+
+.product-image {
+    width: 13.02vw;
+    height: 15.10vw;
+    border-radius: 0.26vw;
+}
+
+.product-title {
+    font-size: 0.75rem;
+    margin: 0.36vw 0 0.31vw;
+    color: black;
+    text-transform: uppercase;
+}
+
+.product-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.47vw;
+}
+
+.quantity-button {
+    width: 1.25vw;
+    height: 1.25vw;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: none;
+    font-size: 1.125rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;  /*Обнаружил что Cera Pro, что я скачал не имеет полный доступ ко всем знакам*/
+    transition: all 0.3s ease;
+    
+}
+
+.quantity-button:hover {
+    background-color: var(--lavender);
+    transform: scale(1.05);
+}
+
+.quantity-current {
+    width: 3.91vw;
+    height: 1.25vw;
+    background-color: #FFFFFF;
+    text-align: center;
+    font-family: 'Cera Pro Regular', sans-serif;
+    font-weight: 400; 
+    font-size: 1rem;
+}
+
+.description-button {
+    width: 5.95vw;
+    height: 1.56vw;
+    border: none;
+    border-radius: 0.78vw;
+    background-color: var(--basicRose);
+    color: #000000;
+    padding: 0.23vw 0.94vw;
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+}
+
+.description-button:hover {
+    background-color: var(--lavender);
+    transform: scale(1.05);
+}
+
+
+
+  /* MAIN - Order */
+
+.main-content_order-container {
+    max-width: 630px;
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+    margin: 90px auto 80px;
+    background-color: var(--lightGray);
+    border-radius: 30px;
+    font-family: 'Cera Pro Regular', sans-serif;
+    height: 56px;
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    margin: 0;
+    width: 50%;
+    color: #000000;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.main-content_order-container .total-amount-display {
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.order-button {
+    width: 50%;
+    height: 100%;
+    background-color: var(--basicRose);
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-button:hover{
+    background-color: var(--lavender);
+}
+
+
+
+/* MAIN - Корзина */
+
+.cart-container {
+    background-color: var(--lightGray);
+    padding: 1.3vw 10.16vw 1.3vw 10.16vw;
+    border-radius: 0.52vw;
+    width: 100%;
+    font-family: 'Cera Pro Regular', sans-serif;
+    
+   
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.cart-table thead th {
+    padding: 10px;
+    color: var(--darkGray);
+    font-weight: 400;
+    font-size: 12px;
+}
+
+/* MAIN - Корзина - CHECKBOX */
+
+.cart-table .real-checkbox {
+    display: none;
+}
+
+.cart-table .select-all-checkbox {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-image: url(../assets/images/checkbox-passive.png);
+    background-size: cover;
+    border: none;
+    border-radius: 4px;
+    vertical-align: sub;
+}
+
+.select-all-checkbox::before {
+    content: '';
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+}
+
+.real-checkbox:checked + .select-all-checkbox {
+    background-image: url(../assets/images/checkbox-select-all.png);
+}
+
+.real-all-checkbox {
+    display: none;
+}
+
+.real-all-checkbox:checked + .select-all-checkbox {
+    background-image: url(../assets/images/checkbox-active.png);
+}
+
+
+.cart-table tbody td {
+    padding: 10px;
+    border-top: 1px solid var(--lineGray);
+    color: #000000;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#buc {
+    padding-left: 30px;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.cart-table tfoot .cart-footer {
+    border-top: 1px solid var(--lineGray);
+}
+
+.cart-table tfoot td {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.cart-table tfoot .delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cera Pro Regular', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding-inline: 0;
+}
+
+
+
+.cart-table tfoot .total-amount {
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cart-table .last-column {
+    text-align: right;
+}
+
+/* CONFIRMATION  */
+
+.main-content_order-confirmation {
+    max-width: 300px;
+    padding: 0;
+    margin: 30px auto 60px;
+    background-color: var(--lightGray);
+    border-radius: 30px;
+    font-family: 'Cera Pro Regular', sans-serif;
+    height: 48px;
+}
+
+.confirmation-button {
+    width: 100%;
+    height: 100%;
+    background-color: var(--basicRose);
+    font-weight: bold;
+    font-family: 'Cera Pro Bold', sans-serif;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+    transition: all 0.3s ease;
+}
+
+.confirmation-button:hover{
+    background-color: var(--lavender);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.7);
+}
+
+/* FOOTER */
+
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.footer-content__first {
+    margin: 50px 900px 0px 0px ;
+    z-index: 2;
+    position: absolute;
+    
+}
+
+.footer-content__first a {
+    text-decoration: none;
+    display: inline-block;
+   
+}
+
+.footer-content__first img {
+    width: 40px;
+    transition: all 0.3s ease;
+}
+
+.footer-content__first img:hover {
+    transform: scale(1.05);
+}
+
+.footer-content__logo-container {
+    flex: 1; /* Занимает все доступное пространство для центрирования */
+    z-index: 1;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Центрируем логотип внутри контейнера */
+}
+
+.footer-content__logo-container img {
+    width: 100%;
+    max-width: 511px;
+}
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////// 
+/////////////////////Адаптивность////////////////////////////////////////*/
+
+
+
+/* Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+   
+    .container{
+        max-width: 100%;
+   }
+   /* ///////////HEADER///////// */
+   .header-content__logo-container {
+        width: 100%;
+        position: relative;
+        z-index: 1; 
+    }
+
+    .header-content__logo-container img {
+        margin-left: 0;
+        width: 100%; 
+    }
+
+    /* Див с кнопкой, расположенной поверх логотипа */
+    .header-content__last {
+        position: absolute; 
+        top: 0; 
+        right: 0;
+        margin: 6.93vw 1.16vw 0 0;
+        z-index: 2; 
+    }
+    
+    .header-content__last img {
+        width: 8vw; 
+        height: 8vw;   
+    }
+
+    /* ///////////MAIN///////// */
+    .main-content_about p {
+        font-size: 6.05vw;
+    }
+
+    /* .js-products-list .cart-container {
+        font-size: 8px;
+    } */
+
+    .js-products-list {
+        gap: 15vw;
+    }
+
+    .product-card {
+        width: 70.93vw;
+        padding: 6.98vw 0 3.72vw 0;
+        
+    }
+    
+    .product-image {
+        width: 58.14vw;
+        height: 67.44vw;
+        border-radius: 1.16vw;
+    }
+
+    .product-title {
+        font-size: 1rem;
+        margin: 1.63vw 0 1.4vw;
+    }
+
+    .product-controls {
+        margin-top: 0;
+        gap: 2.09vw;
+    }
+    
+    .quantity-button {
+        width: 5.58vw;
+        height: 5.58vw;
+    }
+    
+    .quantity-current {
+        width: 17.44vw;
+        height: 5.58vw;
+        font-size: 1.125rem;
+        padding: 0;
+    }
+
+    .description-button {
+        width: 20.7vw;
+        height: 4.65vw;
+        border-radius: 2.33vw;
+        
+        
+        
+    }
+
+
+
+
+
+
+    /* Модальное окно*/
+    .product-description-modal:active {
+        max-width: 90vw;
+        max-height: 90vw;
+        
+    }
+
+    .modal-content {
+        /* position: relative; */
+        max-width: 90vw;
+        max-height: 90vw;
+        padding: 0;
+        border-radius: 4vw;
+        gap: 4vw;
+    }
+
+    .image-wrapper {
+        max-width: 55vw;
+        max-height: 43vw;
+        height: 100%;
+        padding: 1vw; /* Отступы вокруг изображения */
+        border-radius: 2vw; /* Скругленные углы для заднего блока */
+        margin-left: 10px;
+    } 
+
+    /* Стили для изображения продукта */
+    .modal-content .product-image {
+        max-width: 35vw;
+        max-height: 40vw;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Стили для текстового содержания */
+    .modal-text-content {
+        max-width: 55vw;
+        max-height: 55vw;
+        gap: 4vw;
+    }
+    /* Логотип */
+    .modal-logo img{
+        width: 40vw;
+        max-height: 10vw;
+        margin-bottom: 2vw;
+        margin-left: 3vw;
+    }
+
+    /* Заголовок */
+    .modal-title {
+        font-family: 'Cera Pro Bold', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    /* Описание продукта */
+    .product-description-text {
+        max-height: 30vw;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        font-size: 0.5rem;
+        line-height: 1.5;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    .modal-overlay {
+        width: 100%;
+    }
+
+    /* Кнопка закрытия с текстом и иконками ("Inchide") */
+    .modal-close-btn {
+        font-size: 0.5rem;
+        gap: 2vw;
+        bottom: 1vw; /* Отступ от нижнего края */
+        right: 1vw; /* Отступ от правого края */
+        padding: 1vw 2vw;
+        position: absolute;
+        z-index: 1001;
+        touch-action: manipulation;
+        
+    }
+
+    /* Стили для стрелки */
+    .close-arrow {
+        width: 7vw;
+        height: auto;
+    }
+
+    /* Основные стили для иконки крестика */
+    .close-icon {
+        width: 6vw;
+        height: 6vw;
+        border-radius: 1vw;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+
+    /*///////////////////////////////////////////*/
+
+    /*Вывод общей цены*/
+    .main-content_order-container {
+        max-width: 430px;
+        margin: 4vw auto 4vw;
+        width: 75%;
+    }
+
+    .total {
+        font-size: 1rem;
+    }
+
+    /*Корзина*/
+    .main-content {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cart-container {
+        padding: 0;
+        width: 99%;
+    }
+
+    .cart-container .cart-table{
+        padding: 0;
+        width: 100%;
+        
+    }
+
+    .cart-table thead th {
+        padding: 1vw;
+        color: var(--darkGray);
+        font-weight: 400;
+        font-size: 0.7rem;
+    }
+
+    .cart-table tbody td {
+        padding: 1vw;
+        font-size: 0.7rem;
+    }
+    .cart-table .last-column {
+        padding: 5px;
+    }
+    .cart-table tfoot td {
+        padding: 1vw;
+        font-size: 0.7rem;
+    }
+    .cart-table tfoot .delete {
+        font-size: 0.7rem;
+    }
+    .cart-table tfoot .total-amount {
+        font-size: 0.7rem;
+    }
+
+
+    /*/////////////FOOTER//////////////*/
+    .footer-content__first {
+        margin: -4vw 0 0 68vw;
+    }
+    .footer-content__logo-container img {
+        max-width: 430px;
+        width: 100%;
+    }
+
+
+    /*/////Убираю все хаверы для мобильных версий//////////////////*/
+    .header-content__last:hover {
+        transform: none;
+    }
+
+    .product-card:hover {
+        transform: none;
+    }
+
+    .close-icon:hover {
+        transform: none;
+    }
+
+    .quantity-button:hover {
+        transform: none;
+    }
+
+    .description-button:hover {
+        transform: none;
+    }
+
+    .confirmation-button:hover{
+        transform: none;
+    }
+
+    .footer-content__first img:hover {
+        transform: none;
+    }
+
+}
+
+
+
+/* Tablets up to 768px*/
+@media (min-width: 481px) and (max-width: 768px) {
+    .js-products-list {
+        gap: 3vw;
+    }
+
+    .container{
+        max-width: 100%;
+   }
+    
+    .product-card {
+        width: 45%;
+        border-radius: 0.98vw;
+        padding: 2.93vw 0 1.56vw 0 ;
+    }
+
+    .product-image {
+        width: 81.9%;
+        height: 74.7%;
+        border-radius: 0.49vw;
+    }
+
+    .product-title {
+        font-size: 1.125rem;
+        margin: 0.68vw 0 0.59vw;
+    }
+
+    .product-controls {
+        gap: 1.5vw;
+    }
+    
+    .quantity-button {
+        width: 5vw;
+        height: 5vw;
+        font-size: 2rem;
+    }
+    
+    .quantity-current {
+        width: 9vw;
+        height: 5vw;
+        font-size: 1.5rem;
+        padding-top: 0.5vw;
+    }
+
+    .description-button {
+        width: 12vw;
+        height: 4.5vw;
+        font-size: 1rem; 
+    } 
+
+    /*Корзина*/
+    .main-content_order-container {
+        max-width: 1024px;
+        margin: 4vw auto 4vw;
+        width: 75%;
+    }
+
+    .total {
+        font-size: 1.5rem;
+    }
+
+    .order-button {
+        font-size: 1.5rem;
+    }
+
+    
+    /* Модальное окно*/
+    .product-description-modal:active {
+        max-width: 90vw;
+        max-height: 90vw;
+        
+    }
+
+    .modal-content {
+        /* position: relative; */
+        max-width: 90vw;
+        max-height: 90vw;
+        padding: 0;
+        border-radius: 4vw;
+        gap: 4vw;
+    }
+
+    .image-wrapper {
+        max-width: 55vw;
+        max-height: 43vw;
+        height: 100%;
+        padding: 1vw; /* Отступы вокруг изображения */
+        border-radius: 2vw; /* Скругленные углы для заднего блока */
+        margin-left: 2.08vw;
+    } 
+
+    /* Стили для изображения продукта */
+    .modal-content .product-image {
+        max-width: 35vw;
+        max-height: 40vw;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Стили для текстового содержания */
+    .modal-text-content {
+        max-width: 55vw;
+        max-height: 55vw;
+        gap: 4vw;
+    }
+    /* Логотип */
+    .modal-logo img{
+        width: 40vw;
+        max-height: 10vw;
+        margin-bottom: 2vw;
+        margin-left: 3vw;
+    }
+
+    /* Заголовок */
+    .modal-title {
+        font-family: 'Cera Pro Bold', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    /* Описание продукта */
+    .product-description-text {
+        max-height: 30vw;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        font-size: 0.75rem;
+        line-height: 1.5;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    .modal-overlay {
+        width: 100%;
+    }
+
+    /* Кнопка закрытия с текстом и иконками ("Inchide") */
+    .modal-close-btn {
+        font-size: 0.5rem;
+        gap: 2vw;
+        bottom: 1vw; /* Отступ от нижнего края */
+        right: 1vw; /* Отступ от правого края */
+        padding: 1vw 2vw;
+        position: absolute;
+        z-index: 1001;
+        touch-action: manipulation;
+        
+    }
+
+    /* Стили для стрелки */
+    .close-arrow {
+        width: 7vw;
+        height: auto;
+    }
+
+    /* Основные стили для иконки крестика */
+    .close-icon {
+        width: 6vw;
+        height: 6vw;
+        border-radius: 1vw;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+
+    /*///////////////////////////////////////////*/
+    /*Таблица*/
+    .main-content {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-container {
+        padding: 0;
+        width: 89.84vw;
+        
+    }
+
+    .cart-table thead th {
+        font-size: 1.125rem;
+    }
+
+    .quantity-btn {
+        font-size: 1.3rem;
+    }
+
+    .cart-table tbody td {
+        font-size: 1.3rem;
+    }
+
+    .cart-table tfoot td {
+        font-size: 1.3rem;
+    }
+
+    .cart-table tfoot .delete {
+        font-size: 1.125rem;
+    }
+
+    .cart-table tfoot .total-amount {
+        font-size: 1.3rem;
+    }
+
+    /*Confirm Comanda*/ 
+    .main-content_order-confirmation {
+        max-width: 1024px;
+        width: 35%;
+    }
+
+    .confirmation-button {
+        font-size: 1.5rem;
+    }
+
+     /*/////Убираю все хаверы для мобильных версий//////////////////*/
+     .header-content__last:hover {
+        transform: none;
+    }
+
+    .product-card:hover {
+        transform: none;
+    }
+
+    .close-icon:hover {
+        transform: none;
+    }
+
+    .quantity-button:hover {
+        transform: none;
+    }
+
+    .description-button:hover {
+        transform: none;
+    }
+
+    .confirmation-button:hover{
+        transform: none;
+    }
+
+    .footer-content__first img:hover {
+        transform: none;
+    }
+}
+
+/* Tablets (up to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .js-products-list {
+        gap: 3vw;
+    }
+
+    .container{
+        max-width: 100%;
+   }
+    
+    .product-card {
+        width: 45%;
+        border-radius: 0.98vw;
+        padding: 2.93vw 0 1.56vw 0 ;
+    }
+
+    .product-image {
+        width: 81.9%;
+        height: 74.7%;
+        border-radius: 0.49vw;
+    }
+
+    .product-title {
+        font-size: 1.125rem;
+        margin: 0.68vw 0 0.59vw;
+    }
+
+    .product-controls {
+        gap: 1.5vw;
+    }
+    
+    .quantity-button {
+        width: 5vw;
+        height: 5vw;
+        font-size: 2.5rem;
+    }
+    
+    .quantity-current {
+        width: 9vw;
+        height: 5vw;
+        font-size: 2rem;
+        padding-top: 0.5vw;
+    }
+
+    .description-button {
+        width: 12vw;
+        height: 4.5vw;
+        font-size: 1.5rem; 
+    } 
+
+    /*Корзина*/
+    .main-content_order-container {
+        max-width: 1024px;
+        margin: 4vw auto 4vw;
+        width: 75%;
+    }
+
+    .total {
+        font-size: 1.5rem;
+    }
+
+    .order-button {
+        font-size: 1.5rem;
+    }
+
+    /*Таблица*/
+    .main-content {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cart-container {
+        padding: 0;
+        width: 89.84vw;
+        
+    }
+
+    .cart-table thead th {
+        font-size: 1.125rem;
+    }
+
+    .quantity-btn {
+        font-size: 1.3rem;
+    }
+
+    .cart-table tbody td {
+        font-size: 1.3rem;
+    }
+
+    .cart-table tfoot td {
+        font-size: 1.3rem;
+    }
+
+    .cart-table tfoot .delete {
+        font-size: 1.125rem;
+    }
+
+    .cart-table tfoot .total-amount {
+        font-size: 1.3rem;
+    }
+
+    /*Confirm Comanda*/ 
+    .main-content_order-confirmation {
+        max-width: 1024px;
+        width: 35%;
+    }
+
+    .confirmation-button {
+        font-size: 1.5rem;
+    }
+
+     /*/////Убираю все хаверы для мобильных версий//////////////////*/
+     .header-content__last:hover {
+        transform: none;
+    }
+
+    .product-card:hover {
+        transform: none;
+    }
+
+    .close-icon:hover {
+        transform: none;
+    }
+
+    .quantity-button:hover {
+        transform: none;
+    }
+
+    .description-button:hover {
+        transform: none;
+    }
+
+    .confirmation-button:hover{
+        transform: none;
+    }
+
+    .footer-content__first img:hover {
+        transform: none;
+    }
+
+    /* Модальное окно*/
+    .product-description-modal:active {
+        max-width: 90vw;
+        max-height: 90vw;
+        
+    }
+
+    .modal-content {
+        /* position: relative; */
+        max-width: 90vw;
+        max-height: 90vw;
+        padding: 0;
+        border-radius: 4vw;
+        gap: 4vw;
+    }
+
+    .image-wrapper {
+        max-width: 55vw;
+        max-height: 43vw;
+        height: 100%;
+        padding: 1vw; /* Отступы вокруг изображения */
+        border-radius: 2vw; /* Скругленные углы для заднего блока */
+        margin-left: 2.08vw;
+    } 
+
+    /* Стили для изображения продукта */
+    .modal-content .product-image {
+        max-width: 35vw;
+        max-height: 40vw;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Стили для текстового содержания */
+    .modal-text-content {
+        max-width: 55vw;
+        max-height: 55vw;
+        gap: 4vw;
+    }
+    /* Логотип */
+    .modal-logo img{
+        width: 40vw;
+        max-height: 10vw;
+        margin-bottom: 2vw;
+        margin-left: 3vw;
+    }
+
+    /* Заголовок */
+    .modal-title {
+        font-family: 'Cera Pro Bold', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    /* Описание продукта */
+    .product-description-text {
+        max-height: 30vw;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding-right: 3vw;
+        padding-left: 3vw;
+    }
+
+    .modal-overlay {
+        width: 100%;
+    }
+
+    /* Кнопка закрытия с текстом и иконками ("Inchide") */
+    .modal-close-btn {
+        font-size: 1rem;
+        gap: 2vw;
+        bottom: 1vw; /* Отступ от нижнего края */
+        right: 1vw; /* Отступ от правого края */
+        padding: 1vw 2vw;
+        position: absolute;
+        z-index: 1001;
+        touch-action: manipulation;
+        
+    }
+
+    /* Стили для стрелки */
+    .close-arrow {
+        width: 7vw;
+        height: auto;
+    }
+
+    /* Основные стили для иконки крестика */
+    .close-icon {
+        width: 6vw;
+        height: 6vw;
+        border-radius: 1vw;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+
+    /*///////////////////////////////////////////*/
+}
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

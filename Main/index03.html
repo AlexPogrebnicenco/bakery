@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Main Page</title>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-content__logo-container">
+                    <img class="header-content__logo" src="../assets/images/LoginLogo.png">
+                </div>
+
+                <div class="header-content__last">
+                    <a href="../Login/index.html">
+                        <img src="../assets/images/exit.png" alt="Exit">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!--MAIN-->
+    <main>
+        <div class="container">
+            <div class="main-content">
+
+                <div class="main-content_about">
+                    <p>PRODUSE DE PATISERIE</p>
+                </div>
+
+                <div class="main-content_menu">
+                    <div class="category">
+                        <div class="product-grid">
+                            <ul class="js-products-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content_order-container">
+                    <div class="total">Total:<strong class="total-amount-display">0,00 Lei</strong>
+                    </div>
+                    <button class="order-button">COMANDĂ</button>
+                </div>
+
+                <div class="main-content_about">
+                    <p>COMANDĂ</p>
+                </div>
+                <!-- Корзина -->
+                <div class="cart-container">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" id="select-all" class="real-checkbox">
+                                        <span class="select-all-checkbox"></span>
+                                    </label>
+                                </th>
+                                <th>Nr.</th>
+                                <th>Denumirea</th>
+                                <th id="buc">Buc.</th>
+                                <th>Preț</th>
+                                <th class="last-column">Suma</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cart-items">
+                            <!-- <tr class="cart-item" data-id="01">
+                                <td>
+                                    <label>
+                                        <input type="checkbox" id="select-all" class="real-all-checkbox">
+                                        <span class="select-all-checkbox"></span>
+                                    </label>
+                                </td>
+                                <td>1.</td>
+                                <td>Ecler cu ciocolata 1</td>
+                                <td class="quantity">
+                                    <button class="quantity-btn decrease" data-action="decrease">-</button>
+                                    <span class="item-quantity" data-counter="">5</span>
+                                    <button class="quantity-btn increase" data-action="increase">+</button>
+                                </td>
+                                <td class="item-price">8,00</td>
+                                <td class="item-total last-column">60,00</td>
+                            </tr> -->
+                        </tbody>
+                        <tfoot>
+                            <tr class="cart-footer">
+                                <td colspan="4">
+                                    <button class="delete">
+                                        <img src="../assets/images/Delete.png">
+                                        <span>Delete selected</span>
+                                    </button>
+                                </td>
+
+                                <td colspan="0" class="total">
+                                    Total
+                                </td>
+                                <td class="total-amount last-column">0,00</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- Корзина -->
+
+                <div class="main-content_order-confirmation">
+                    <button class="confirmation-button">CONFIRM COMANDĂ</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-content__first">
+                    <a href="https://www.instagram.com/vanilla_bloom.md/?igsh=MWkzYmRiNWJkdWRsYQ%3D%3D" target="_blank">
+                        <img src="../assets/images/Instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/VanillaBloom.Moldova" target="_blank">
+                        <img src="../assets/images/Facebook.png" alt="Facebook">
+                    </a>
+                </div>
+
+                <div class="footer-content__logo-container">
+                    <img class="footer-content__logo" src="../assets/images/LoginLogo.png">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="module" src="./js/main03.js"></script>
+    <script src="./js/counter03.js"></script>
+    <script src="./js/cart-03.js"></script>
+</body>
+
+</html>
